@@ -1,10 +1,34 @@
-# Mkn-lib
-Scaffold a nodejs lib
+# Asset Life Cycle
+Check and preview assets on s3
 ## Description
-This skeleton will get you started on a new nodejs lib quickly 
+This library provides the simple way to handle docs on s3.
 
 ### Usage
-Clone this lib and start adding your custom code
+```
+const s3 = {
+    accessKeyId: 'xxxxxxxxxxxxxxx',
+    secretAccessKey: 'yyyyyyyyyyyyyyyyyy',
+    bucket: 'enrich-form-service-data',
+    region: 'us-east-1'
+  }
+  const client = await createAssetClient({
+    s3,
+    getVersion: always('v0')
+  })('sales-form-credit') //
+
+  const formAssets = await client({
+    dealershipId: 'zzzzzzzzzzzzzzzzz',
+    applicationId: 'cccccccccccccccc',
+    assetType: 'pdf',
+    uuid: 'ffffffffffffffffffffff',
+    resultOrQueue: 'result'
+  })
+  console.log('isAvailable ', typeof formAssets)
+  // const result = await formAssets.isAvailable()
+  // const result1 = await formAssets.getSignedUrl()
+  const result2 = await formAssets.repush()
+  console.log('the result are ', result2)
+```
 
 ### Tasks
 1. Change the package name
