@@ -1,5 +1,5 @@
 {
-  "name": "@simpledealer/asset-life-cycle",
+  "name": "@simple-dealer/asset-life-cycle",
   "version": "1.0.0",
   "description": "Scaffold a new library",
   "main": "src/index.js",

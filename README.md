@@ -32,7 +32,7 @@ const s3 = {
 
 ### Tasks
 1. Change the package name
-2. Update his readMe to be talk about your library
+2. Update his readMe to talk about your library
 
 ## License
 
