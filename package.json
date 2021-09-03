@@ -36,11 +36,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dapore/mkn-lib.git"
+    "url": "git@github.com:simpledealer/asset-life-cycle.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/dapore/mkn-lib/issues"
+    "url": "git@github.com:simpledealer/asset-life-cycle/issues"
   },
-  "homepage": "https://github.com/dapore/mkn-lib#readme"
+  "homepage": "git@github.com:simpledealer/asset-life-cycle#readme"
 }
