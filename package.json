@@ -2,7 +2,7 @@
   "name": "@simple-dealer/asset-life-cycle",
   "version": "1.1.1",
   "description": "Scaffold a new library",
-  "main": "src/index.js",
+  "main": "index.js",
   "module": "src/index.js",
   "author": "Rubin Apore",
   "license": "MIT",
