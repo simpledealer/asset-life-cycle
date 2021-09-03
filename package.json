@@ -1,5 +1,5 @@
 {
-  "name": "@dapore/mkn-lib",
+  "name": "@simpledealer/asset-life-cycle",
   "version": "1.0.0",
   "description": "Scaffold a new library",
   "main": "src/index.js",
