@@ -1,5 +1,5 @@
 import { strict as assert } from 'assert'
-import { compose, includes, not } from '@meltwater/phi'
+import { compose, includes, not } from './util/fxn'
 import createLogger from './util/logger'
 import createGetKey from './get-asset-key'
 

@@ -1,4 +1,4 @@
-import { noop } from '@meltwater/phi'
+import { noop } from './util/fxn'
 import { STS as createSTS, S3 as createS3 } from 'aws-sdk'
 import createLogger from './util/logger'
 import createGetKey from './get-asset-key'

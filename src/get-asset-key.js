@@ -1,4 +1,4 @@
-import { prop } from '@meltwater/phi'
+import { prop } from './util/fxn'
 import { v4 as getUuid } from 'uuid'
 
 const pathSeperators = { queue: '/', result: '.' }
