@@ -10,5 +10,5 @@ export default ({ version, assetName = 'sales-credit-form' }) => ({
   assetType,
   uuid = getUuid(),
   resultOrQueue = 'result'
-}) =>
+}) => () =>
   `${version}/${resultOrQueue}/${assetName}/${dealershipId}/${applicationId}/${uuid}${getExtension(resultOrQueue, assetType)}`

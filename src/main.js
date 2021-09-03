@@ -1,6 +1,7 @@
 import { noop } from '@meltwater/phi'
 import { STS as createSTS, S3 as createS3 } from 'aws-sdk'
 import createLogger from './util/logger'
+import createGetKey from './get-asset-key'
 import createIsAssetAvailable from './is-asset-available'
 import createGetSignedUrl from './get-signed-url'
 import createRepushAsset from './repush'
@@ -20,8 +21,10 @@ export default ({
   const isAvailable = createIsAssetAvailable({ s3Options, s3Client, version, assetName })(options)
   const getSignedUrl = createGetSignedUrl({ s3Options, s3Client, version, assetName })(options)
   const repush = createRepushAsset({ s3Options, s3Client, version, assetName })(options)
+  const getKey = createGetKey({ s3Options, s3Client, version, assetName })(options)
   console.log('isAvailable', isAvailable)
   return {
+    getKey,
     isAvailable,
     getSignedUrl,
     repush

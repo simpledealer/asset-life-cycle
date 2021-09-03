@@ -1,10 +1,10 @@
 import createLogger from './util/logger'
-import getKey from './get-urls'
+import createGetKey from './get-asset-key'
 
 export default ({ s3Options, s3Client, assetName, version }) => options => ({ ttl = 30000 } = {}) => {
   const log = createLogger('isAvailable')
   const { bucket: Bucket } = s3Options
-  const key = getKey({ version, assetName })(options)
+  const key = createGetKey({ version, assetName })(options)()
   return new Promise(resolve => {
     log('Checking', key)
     let [intervalPointer, timeOutPointer] = [null, null]
