@@ -22,7 +22,6 @@ export default ({
   const getSignedUrl = createGetSignedUrl({ s3Options, s3Client, version, assetName })(options)
   const repush = createRepushAsset({ s3Options, s3Client, version, assetName })(options)
   const getKey = createGetKey({ s3Options, s3Client, version, assetName })(options)
-  console.log('isAvailable', isAvailable)
   return {
     getKey,
     isAvailable,
