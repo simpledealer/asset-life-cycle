@@ -10,7 +10,7 @@ export default ({
   s3: s3Options,
   STS = createSTS,
   S3 = createS3,
-  getVersion = noop()
+  getVersion = noop
 }) => assetName => async (options = {}) => {
   const log = createLogger('lib:main')
   log('Getting Asset information')
