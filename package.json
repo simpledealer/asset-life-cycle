@@ -1,6 +1,6 @@
 {
   "name": "@simple-dealer/asset-life-cycle",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "Scaffold a new library",
   "module": "src/main.js",
   "main": "src/index.js",
