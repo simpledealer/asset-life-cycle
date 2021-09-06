@@ -26,6 +26,7 @@ export default ({
     getKey,
     isAvailable,
     getSignedUrl,
-    repush
+    repush,
+    queue: repush
   }
 }
