@@ -1,6 +1,6 @@
 {
   "name": "@simple-dealer/asset-life-cycle",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "description": "A convenient wrapper around aws s3 lib",
   "module": "src/main.js",
   "main": "src/index.js",
