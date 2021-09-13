@@ -13,23 +13,15 @@ export default ({
   getVersion = noop
 }) => assetName => async (options = {}) => {
   const log = createLogger('lib:main')
-  log('Getting Asset information')
+  log('Asset library ready')
   const stsCLient = new STS(s3Options)
-  log('STS client created')
   await stsCLient.getCallerIdentity().promise()
-  log('Identity verified')
   const s3Client = new S3(s3Options)
-  log('S3 client created')
   const version = await getVersion()
-  log('Asset Version', version)
   const isAvailable = createIsAssetAvailable({ s3Options, s3Client, version, assetName })(options)
-  log('IsAvailable Created')
   const getSignedUrl = createGetSignedUrl({ s3Options, s3Client, version, assetName })(options)
-  log('getSignedUrl Created')
   const repush = createRepushAsset({ s3Options, s3Client, version, assetName })(options)
-  log('repush created')
   const getKey = createGetKey({ s3Options, s3Client, version, assetName })(options)
-  log('getKey created')
   return {
     getKey,
     isAvailable,
