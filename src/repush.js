@@ -14,7 +14,7 @@ export default ({ s3Options, s3Client, assetName, version }) => options => async
   const { bucket: Bucket } = s3Options
   const key = createGetKey({ version, assetName })(options)()
   validateQueueKey(key)
-  log('Queueing', key)
+  log('Key', key)
   const params = { Key: key, Bucket, Expires: ttl, Body: (body ? condParseToJson(body) : null) }
   log('Params', params)
   await s3Client.putObject(params).promise()
