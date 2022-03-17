@@ -1,0 +1,38 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Asset Life Cycle Library
+
+on:
+  push:
+    branches:
+      - '**'
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  ENV: ${{ secrets.ENV }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+jobs:  
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm install --global yarn
+    - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    - run: yarn config set registry https://registry.npmjs.org
+    - run: yarn
+    - run: yarn test
+    - run: npm publish || true
+    # - run: mkdir -p node_modules/templates && cd node_modules/templates/ && git clone https://github.com/clenemt/docdash.git
+    # - run: yarn run generate:docs
+    # - run: yarn run upload:docs
