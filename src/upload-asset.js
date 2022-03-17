@@ -11,7 +11,7 @@ export default ({ s3ServiceClient }) => async ({
   extension,
   bucket = 'enrich-form-service-data',
   signedUrlExpiration = 120,
-  contentType,
+  contentType = 'application/json',
   data = null
 } = {}) => {
   const log = createLogger('uploadAssetUrl')
@@ -22,7 +22,7 @@ export default ({ s3ServiceClient }) => async ({
   const { data: { url: uploadSignedUrl } } = await s3ServiceClient.get('/', { params: putObjectParams })
   log({ uploadSignedUrl })
   const axiosClient = createAxiosClient()
-  await axiosClient.put(uploadSignedUrl, data, { headers: { 'content-type': 'application/json' } })
+  await axiosClient.put(uploadSignedUrl, data, { headers: { 'content-type': contentType } })
   log('Uploaded')
   return true
 }
