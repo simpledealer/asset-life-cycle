@@ -15,7 +15,8 @@ env:
   S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
 jobs:  
   test:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       matrix:
         node-version: [12.x]
