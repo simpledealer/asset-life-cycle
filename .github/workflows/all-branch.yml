@@ -16,11 +16,10 @@ env:
 jobs:  
   test:
     # runs-on: ubuntu-latest
-    runs-on: self-hosted
+    runs-on: 'self-hosted'
     strategy:
       matrix:
         node-version: [12.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -34,6 +33,3 @@ jobs:
     - run: yarn
     - run: yarn test
     - run: npm publish || true
-    # - run: mkdir -p node_modules/templates && cd node_modules/templates/ && git clone https://github.com/clenemt/docdash.git
-    # - run: yarn run generate:docs
-    # - run: yarn run upload:docs
