@@ -36,7 +36,7 @@ const s3 = {
 
 ## License
 
-This npm package is Copyright (c) 2016-2017 Simple Dealer.
+This npm package is Copyright (c) 2016-2017 Simple Dealer Inc.
 
 ## Warranty
 
