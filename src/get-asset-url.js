@@ -9,7 +9,7 @@ export const createAxiosClient = () => {
   return axiosClient
 }
 
-export default ({ s3ServiceClient }) => async ({
+export default ({ awsServiceClient }) => async ({
   version = 'v0',
   resourceId,
   instanceId,
@@ -29,14 +29,14 @@ export default ({ s3ServiceClient }) => async ({
   })
   log('Using key', { key })
   const headObjectParams = { bucket, key, signedUrlExpiration, operation: 'headObject' }
-  const { data: { url: headSignedUrl } } = await s3ServiceClient.get('/', { params: headObjectParams })
+  const { data: { url: headSignedUrl } } = await awsServiceClient.get('/s3', { params: headObjectParams })
   log({ headSignedUrl })
   const signedUrl = await success(delayedPromiseRetry(async () => {
     const axiosClient = createAxiosClient()
     log('Trying head request', headSignedUrl)
     await axiosClient.head(headSignedUrl) // this throws if the asset does not exist
     const getObjectParams = { bucket, key, signedUrlExpiration, operation: 'getObject' }
-    const { data: { url: getObjectSignedUrl } } = await s3ServiceClient.get('/', { params: getObjectParams })
+    const { data: { url: getObjectSignedUrl } } = await awsServiceClient.get('/s3', { params: getObjectParams })
     log(getObjectSignedUrl)
     return getObjectSignedUrl
   }, retries, waitPeriod))

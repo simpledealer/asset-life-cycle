@@ -4,7 +4,7 @@ import createGetKey from './get-asset-key'
 
 export const createAxiosClient = () => axios.create({})
 
-export default ({ s3ServiceClient }) => async ({
+export default ({ awsServiceClient }) => async ({
   version = 'v0',
   resourceId,
   instanceId,
@@ -19,7 +19,7 @@ export default ({ s3ServiceClient }) => async ({
   const key = getKey({ version, resourceId, instanceId, extension })
   log('Using key', { key })
   const putObjectParams = { bucket, key, signedUrlExpiration, operation: 'putObject', contentType }
-  const { data: { url: uploadSignedUrl } } = await s3ServiceClient.get('/', { params: putObjectParams })
+  const { data: { url: uploadSignedUrl } } = await awsServiceClient.get('/s3', { params: putObjectParams })
   log({ uploadSignedUrl })
   const axiosClient = createAxiosClient()
   await axiosClient.put(uploadSignedUrl, data, { headers: { 'content-type': contentType } })
